@@ -67,6 +67,12 @@ class App extends React.Component {
   }
 
   render() {
+    const isManager = this.state.accounts[0] === this.state.manager;
+    
+    let pickWinnerButton;
+    if(isManager) pickWinnerButton = <div><h4>Ready to pick a winner?</h4><button onClick={this.pickWinner}>Pick Winner</button></div>;
+    else pickWinnerButton = <div></div>;
+    
     return (
       <div className="App">
         <header className="App-header">
@@ -90,10 +96,7 @@ class App extends React.Component {
               <button>Enter the lottery!</button>
             </div>
           </form>
-          
-          <h4>Ready to pick a winner?</h4>
-          <button onClick={this.pickWinner}>Pick Winner</button>
-          
+          {pickWinnerButton}
         </header>
       </div>
 
